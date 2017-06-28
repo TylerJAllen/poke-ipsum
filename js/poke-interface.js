@@ -27,8 +27,8 @@ $(function() {
   var left = 0;
 
   // Settings
-  var steps = 100;
-  var interval = 20;
+  var steps = 50;
+  var interval = 5;
   var debug = true;
 
   // Elements
