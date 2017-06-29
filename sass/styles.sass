@@ -10,6 +10,15 @@ body
   display: none
 #battlePage
   display: none
+  background-image: url(http://www.immoarea.it/files/images/sfondi/sfondo11.jpg)
+  background-size: cover
+  // background-position: left
+  margin: auto
+  padding: 0
+  position: relative
+  // bottom: 50%
+  height: 100vh
+  width: 100%
 
 #hero
   width: 800px
@@ -59,3 +68,47 @@ body
   font-size: 11px
   color: #222
   padding: 3px 5px
+
+
+#throw
+  display: none
+  width: 0
+  position: absolute
+  bottom: 52%
+  left: 51%
+  border: 1px solid black
+  animation: throw 3s
+
+
+#wiggle
+  display: none
+  width: 4%
+  position: absolute
+  bottom: 48%
+  left: 49%
+  animation: show 1s
+
+
+@keyframes throw
+  0%
+    display: block
+    width: 12%
+    left: 25%
+  50%
+    width: 2%
+    bottom: 50%
+    left: 48%
+    display: block
+  100%
+    width: 3%
+    bottom: 50%
+    left: 50%
+    display: block
+
+@keyframes show
+  0%
+    width: 0%
+  50%
+    width: 2%
+  100%
+    width: 4%

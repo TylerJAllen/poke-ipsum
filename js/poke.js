@@ -1,49 +1,55 @@
 var async = require("async");
 
 function Pokemon() {
-  pokemons = [];
+  this.pokemon = [];
 }
 
-function User(name) {
-  this.name = name;
-  this.score = 0;
+function Character() {
+  this.name = "justin";
 }
 
+// function Character() {
+//   this.bottom = 0;
+//   this.left = 0;
+//   this.steps = 50;
+//   this.interval = 5;
+//   this.debug = true;
+//   this.el = $('.box');
+//   this.ws = $('.winsize');
+//   this.upGif = "images/up.gif";
+//   this.downGif = "images/down.gif";
+//   this.rightGif = "images/right.gif";
+//   this.leftGif = "images/left.gif";
+//   this.maxBottom = $(window).height() - 50;
+//   this.maxLeft = $(window).width() - 50;
+//
+// }
 
-//populate indexArray with random pokemon from API
+//random number generator
+function randNumGenerator(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+//populate Pokemon.pokemons with random pokemon from API
 Pokemon.prototype.createRandomPokemon = function(){
-  var indexArray = [];
-  for (i = 1; i < 7; i ++) {
-    var randomNumber = Math.floor(Math.random()*721 + 1);
-    indexArray.push(randomNumber);
-  }
-  async.eachSeries(indexArray, function(item, done){
-    $.get('http://pokeapi.co/api/v2/pokemon/' + item + '/', function(response) {
-      // indexArray.push(response);
-      // console.log(response);
-      // this.pokemon = [];
-      pokemons.push(response);
-      console.log(pokemons);
-      done();
-      // if (this.pokemon.length === 6) {
-      //   console.log("test");
-      //   for (var i = 0; i < 7; i++) {
-      //     $('#showPokemon').append('<img src="' + this.pokemon[i].sprites.front_default + '" alt="" width="200px" height="200px">');
-      //     console.log(this.pokemon[i].name);
-      //   }
-      //   console.log(this.pokemon);
-      // }
+  this.pokemon = [];
+  var that = this;
+    var randomNumber = randNumGenerator(1, 721);
+    $.get('http://pokeapi.co/api/v2/pokemon/' + randomNumber + '/', function(response) {
+      that.pokemon.push(response);
     });
-  });
-  return this.pokemon;
+  console.log(that.pokemon);
 };
 
-
+// 
+// Pokemon.prototype.catchProbability = function(){
+//   var chanceToCatch = randNumGenerator(1, 3);
+//   return chanceToCatch;
+// };
 
 
 
 
 
 exports.pokemonModule = Pokemon;
-exports.userModule = User;
-// exports.createRandomPokemonModule = createRandomPokemon;
+exports.characterModule = Character;

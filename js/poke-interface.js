@@ -1,32 +1,51 @@
 var Pokemon = require('./../js/poke.js').pokemonModule;
-var User = require('./../js/poke.js').userModule;
-var async = require("async");
-// var createRandomPokemon = require('./../js/poke.js').createRandomPokemonModule;
+var Character = require('./../js/poke.js').characterModule;
+
 
 $(function(){
-  // var pokemon = new XMLHttpRequest();
-  // $('#pokemon-form').click(function() {
-      // var pokemonIndex = $('#pokemon').val();
-      // $('#pokemon').val("");
   $('#startButton').click(function(){
     $('#startPage').hide();
     $('#mapPage').show();
     $('.box').show();
     var newPokemon = new Pokemon();
-    // console.log(newPokemon.pokemon);
+    var newCharacter = new Character();
     var newArray = newPokemon.createRandomPokemon();
+    setTimeout(function(){
+      $('#mapPage').hide();
+      $('#battlePage').show();
+      $('#showPokemon').append('<img id="pokemonID" src="' + newPokemon.pokemon[0].sprites.front_default + '" alt="" width="300px" height="300px">');
+    }, Math.floor(Math.random()*5000 + 3000));
   });
 
+//throw pokeball
+$('#throwPokeballButton').click(function(){
+  $("#throw").show();
+  $("#wiggle").show();
+  setTimeout(function() {
+    if((Math.floor(Math.random()*2 + 1)) === 1) {
+      alert("so close");
+    } else {
+      alert("you caught this pkm!");
+    }
+  }, Math.floor(Math.random()*6000 + 3000));
+});
 
-
-//
-// $(function(){
-//   $('#user-form').click(function(){
-//     var inputName = $('#userName').val();
-//     var NewUser = new User(inputName);
-//
-//   });
-// });
+$('#backToMapButton').click(function(){
+  $('#pokemonID').remove();
+  $("#throw").hide();
+  $("#wiggle").hide();
+  $('#battlePage').hide();
+  $('#mapPage').show();
+  $('.box').show();
+  var newPokemon = new Pokemon();
+  var newCharacter = new Character();
+  var newArray = newPokemon.createRandomPokemon();
+  setTimeout(function(){
+    $('#mapPage').hide();
+    $('#battlePage').show();
+    $('#showPokemon').append('<img id="pokemonID" src="' + newPokemon.pokemon[0].sprites.front_default + '" alt="" width="300px" height="300px">');
+  }, Math.floor(Math.random()*5000 + 3000));
+});
 
 
 //-----movement of character with arrow keys------//
