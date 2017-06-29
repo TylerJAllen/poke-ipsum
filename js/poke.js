@@ -1,7 +1,7 @@
 var async = require("async");
 
-function Poke() {
-  this.pokemon = null;
+function Pokemon() {
+  pokemons = [];
 }
 
 function User(name) {
@@ -11,31 +11,32 @@ function User(name) {
 
 
 //populate indexArray with random pokemon from API
-function createRandomPokemon() {
+Pokemon.prototype.createRandomPokemon = function(){
   var indexArray = [];
   for (i = 1; i < 7; i ++) {
-    var randomNumber = Math.floor(Math.random()*150 + 1);
+    var randomNumber = Math.floor(Math.random()*721 + 1);
     indexArray.push(randomNumber);
   }
-  var pokemonArray = [];
   async.eachSeries(indexArray, function(item, done){
     $.get('http://pokeapi.co/api/v2/pokemon/' + item + '/', function(response) {
       // indexArray.push(response);
       // console.log(response);
-      pokemonArray.push(response);
+      // this.pokemon = [];
+      pokemons.push(response);
+      console.log(pokemons);
       done();
-      if (pokemonArray.length === 6) {
-        console.log("test");
-        for (var i = 0; i < pokemonArray.length; i++) {
-          $('#showPokemon').append('<img src="' + pokemonArray[i].sprites.front_default + '" alt="" width="200px" height="200px">');
-          console.log(pokemonArray[i].name);
-        }
-        console.log(pokemonArray);
-      }
+      // if (this.pokemon.length === 6) {
+      //   console.log("test");
+      //   for (var i = 0; i < 7; i++) {
+      //     $('#showPokemon').append('<img src="' + this.pokemon[i].sprites.front_default + '" alt="" width="200px" height="200px">');
+      //     console.log(this.pokemon[i].name);
+      //   }
+      //   console.log(this.pokemon);
+      // }
     });
   });
-  return pokemonArray;
-}
+  return this.pokemon;
+};
 
 
 
@@ -43,6 +44,6 @@ function createRandomPokemon() {
 
 
 
-exports.pokeModule = Poke;
+exports.pokemonModule = Pokemon;
 exports.userModule = User;
-exports.createRandomPokemonModule = createRandomPokemon;
+// exports.createRandomPokemonModule = createRandomPokemon;

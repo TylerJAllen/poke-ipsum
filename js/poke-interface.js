@@ -1,18 +1,20 @@
-var Poke = require('./../js/poke.js').pokeModule;
+var Pokemon = require('./../js/poke.js').pokemonModule;
 var User = require('./../js/poke.js').userModule;
 var async = require("async");
-var createRandomPokemon = require('./../js/poke.js').createRandomPokemonModule;
+// var createRandomPokemon = require('./../js/poke.js').createRandomPokemonModule;
 
 $(function(){
   // var pokemon = new XMLHttpRequest();
   // $('#pokemon-form').click(function() {
       // var pokemonIndex = $('#pokemon').val();
       // $('#pokemon').val("");
-  var pokemonArray = createRandomPokemon();
   $('#startButton').click(function(){
     $('#startPage').hide();
     $('#mapPage').show();
     $('.box').show();
+    var newPokemon = new Pokemon();
+    // console.log(newPokemon.pokemon);
+    var newArray = newPokemon.createRandomPokemon();
   });
 
 
