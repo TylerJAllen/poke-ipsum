@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "async": "^2.5.0",
     "bower-files": "^4.0.0",
     "browser-sync": "^2.18.12",
     "browserify": "^14.4.0",

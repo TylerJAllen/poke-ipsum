@@ -1,17 +1,22 @@
 var Poke = require('./../js/poke.js').pokeModule;
 var User = require('./../js/poke.js').userModule;
+var async = require("async");
+var createRandomPokemon = require('./../js/poke.js').createRandomPokemonModule;
 
-// $(function(){
-// var pokemon = new XMLHttpRequest();
-// $('#pokemon-form').click(function() {
-//     var pokemonIndex = $('#pokemon').val();
-//     $('#pokemon').val("");
-//
-//     $.get('http://pokeapi.co/api/v2/pokemon/' + pokemonIndex + '/', function(response) {
-//       $('#showPokemon').text("The pokemon index number you have chosen is " + response.name + ".");
-//     });
-//   });
-// });
+$(function(){
+  // var pokemon = new XMLHttpRequest();
+  // $('#pokemon-form').click(function() {
+      // var pokemonIndex = $('#pokemon').val();
+      // $('#pokemon').val("");
+  var pokemonArray = createRandomPokemon();
+  $('#startButton').click(function(){
+    $('#startPage').hide();
+    $('#mapPage').show();
+    $('.box').show();
+  });
+
+
+
 //
 // $(function(){
 //   $('#user-form').click(function(){
@@ -22,7 +27,7 @@ var User = require('./../js/poke.js').userModule;
 // });
 
 
-$(function() {
+//-----movement of character with arrow keys------//
   var bottom = 0;
   var left = 0;
 
